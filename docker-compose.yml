@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  # mongo:
+  #   build:
+  #     context: ./mongo
+  #     dockerfile: Dockerfile
+  #   container_name: MongoDB
+  #   image: mongodb
+  #   restart: always
+  #   ports:
+  #     - 27017:27017
+  auth:
+    # depends_on:
+    #   - mongo
+    ports:
+      - 4000:4000
+    env_file:
+      - .env
+    build:
+      context: ./auth
+      dockerfile: Dockerfile.dev
+    container_name: auth
+    image: auth
+    volumes:
+      - /app/node_modules
+      - ./auth:/app
