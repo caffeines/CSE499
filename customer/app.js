@@ -9,7 +9,7 @@ const configServer = require('./config/server');
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
 
-console.log('\n');
+console.log('\n CUSTOMER SERVICE \n');
 
 const app = express();
 const server = http.createServer(app);

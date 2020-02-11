@@ -1,11 +1,11 @@
 const { envVariableChecker } = require('../lib/utils');
 
-const values = ['SERVER_NAME', 'SERVER_HOST', 'SERVER_APP_LINK'];
+const values = ['AUTH_SERVER_NAME', 'AUTH_SERVER_HOST', 'AUTH_SERVER_APP_LINK'];
 envVariableChecker(values);
 
 module.exports = {
-  name: process.env.SERVER_NAME,
-  host: process.env.SERVER_HOST,
-  port: Number(process.env.SERVER_PORT) || 4000,
-  appLink: process.env.SERVER_APP_LINK,
+  name: process.env.AUTH_SERVER_NAME,
+  host: process.env.AUTH_SERVER_HOST,
+  port: Number(process.env.AUTH_SERVER_PORT) || 4000,
+  appLink: process.env.AUTH_SERVER_APP_LINK,
 };

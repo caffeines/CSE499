@@ -7,6 +7,9 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  profilePic: {
+    type: String,
+  },
   address: {
     type: String,
   },

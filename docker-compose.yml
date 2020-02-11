@@ -10,6 +10,14 @@ services:
   #   restart: always
   #   ports:
   #     - 27017:27017
+  rabbitmq:
+      image: "rabbitmq:3-management"
+      container_name: rabbitmq
+      ports:
+        - "5672:5672"
+        - "15672:15672"
+      volumes:
+        - 'rabbitmq_data:/data'
   auth:
     # depends_on:
     #   - mongo
@@ -21,7 +29,24 @@ services:
       context: ./auth
       dockerfile: Dockerfile.dev
     container_name: auth
-    image: auth
+    image: caffeines/auth
     volumes:
       - /app/node_modules
       - ./auth:/app
+
+  customer:
+    ports:
+      - 4001:4001
+    env_file: 
+      - .env
+    build: 
+      context: ./customer
+      dockerfile: Dockerfile.dev
+    container_name: customer
+    image: caffeines/customer
+    volumes: 
+      - /app/node_modules
+      - ./customer:/app
+
+volumes:
+  rabbitmq_data:
