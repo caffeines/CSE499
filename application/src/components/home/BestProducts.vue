@@ -3,7 +3,7 @@
     <section class="section__newproduct">
       <v-container class="my-6">
         <h2 class="heading-primary my-2" align="center">
-          New
+          Best Selling
           <span class="heading-primary-span">products</span>
         </h2>
         <p class="catagory-text" align="center">

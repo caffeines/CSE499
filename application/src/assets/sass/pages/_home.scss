@@ -1,3 +1,7 @@
+//////////welcome section//////
+
+//////////welcome section//////
+
 .catagory-text {
   font-size: 1.5rem;
   font-weight: 300;
@@ -6,4 +10,61 @@
 .section__newproduct {
   padding: 5rem 0;
   background-color: var(--color-grey-light-1);
+}
+//offer section
+.app {
+  border-top: 1px solid rgb(15, 194, 95);
+}
+
+.percentOff {
+  display: flex;
+  background: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    margin-left: 1.4rem;
+    color: var(--color-white);
+  }
+  &__text {
+    color: var(--color-white);
+    &-sale-1 {
+      &:link,
+      &:visited {
+        margin-bottom: 0.5rem !important;
+        font-size: 1.6rem;
+        margin-left: 4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: inherit;
+        display: block;
+      }
+    }
+    &-sale-2 {
+      &:link,
+      &:visited {
+        margin-bottom: 0 !important;
+        font-size: 1.4rem;
+        margin-left: 4rem;
+        color: inherit;
+      }
+    }
+  }
+}
+.freeShip {
+  background: linear-gradient(
+    to right,
+    $color-blue-light-1,
+    $color-blue-dark-1
+  );
+}
+
+.moneyBack {
+  background: linear-gradient(to right, $color-red-light-1, $color-red-dark-1);
 }

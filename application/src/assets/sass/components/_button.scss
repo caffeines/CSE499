@@ -1,9 +1,14 @@
 .btn {
   &-cart {
     font-size: 1.3rem !important;
+    font-family: 'Pacifico', cursive;
     &:hover {
       background-color: var(--color-black) !important;
       color: var(--color-white) !important;
     }
+  }
+  &-viewall {
+    font-size: 1.3rem !important;
+    margin-top: 2rem !important;
   }
 }
