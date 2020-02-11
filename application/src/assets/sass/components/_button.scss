@@ -1,0 +1,9 @@
+.btn {
+  &-cart {
+    font-size: 1.3rem !important;
+    &:hover {
+      background-color: var(--color-black) !important;
+      color: var(--color-white) !important;
+    }
+  }
+}
