@@ -20,14 +20,18 @@ module.exports = {
     ],
     'linebreak-style': 0,
     'global-require': 0,
-    'eslint linebreak-style': [0, 'error', 'windows']
+    'eslint linebreak-style': [0, 'error', 'windows'],
+    'max-len': 'off'
   },
   parserOptions: {
     parser: 'babel-eslint'
   },
   overrides: [
     {
-      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
       env: {
         jest: true
       }
