@@ -30,8 +30,9 @@
   }
   &-row2 {
     padding: 2.6rem 0;
-    padding-left: 7rem;
+    // padding-left: 7rem;
     vertical-align: middle;
+    text-align: center;
   }
   &__body {
     font-size: 1.3rem;
@@ -75,6 +76,26 @@
     &-price {
     }
     &-quantity {
+      text-align: center;
+      width: 40%;
+      .quantity__reduce,
+      .quantity__increase {
+        &:link,
+        &:visited {
+          text-decoration: none;
+          font-size: 1.6rem;
+          color: var(--color-black);
+        }
+      }
+      .quantity__input {
+        outline: none;
+        border: 1px solid #000;
+        margin: 0 1rem;
+        padding: 1.2rem 0.3rem;
+        text-align: center;
+
+        width: 15%;
+      }
     }
     &-subtotal {
       font-weight: bold;
