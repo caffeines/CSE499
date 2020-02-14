@@ -50,7 +50,7 @@
               <router-link to="#" class="quantity__reduce">
                 <i class="fas fa-minus quantity__reduce" @click="decrease()"></i>
               </router-link>
-              <input type="text" class="quantity__input" :value="cart" />
+              <input type="text" class="quantity__input" v-model="cart" />
               <router-link to="#" class="quantity__increase">
                 <i class="fas fa-plus" @click="increase()"></i>
               </router-link>
