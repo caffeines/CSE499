@@ -1,0 +1,27 @@
+.checkout__form {
+  font-size: 1.6rem;
+  &-group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &-label {
+    display: block;
+    margin-bottom: 1rem;
+    // font-style: $DefaultFont;
+  }
+  &-input {
+    padding: 1rem 2rem;
+    outline: none;
+    border: $border;
+    width: 90%;
+    transition: all 0.2s;
+    &:focus {
+      outline: none;
+      border: 1px solid var(--color-primary);
+    }
+  }
+  &-error {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    color: $color-red-dark-1;
+  }
+}
