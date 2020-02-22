@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const ObjectId = require('mongoose').SchemaTypes;
+const { ObjectId } = require('mongoose').SchemaTypes;
 const { getModel } = require('../lib/utils');
 const CustomerSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   profilePic: {
     type: String,

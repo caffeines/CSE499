@@ -38,9 +38,14 @@ const AuthController = {
     try {
       const foundOTP = await findOTP(username, otp);
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
-        const user = await amqpSender('customer_queue', { type: 'addNewUser', username });
+        const message = JSON.stringify(username);
+        await req.producer.send({
+          topic: 'CreateUser',
+          messages: [{ value: message }]
+        });
         await deleteUser(username);
-        res.ok({ message: 'User OTP verified' });
+        res.ok({ message: 'User OTP verified', token: 'username' });
+        return;
       } else if (foundOTP && foundOTP.OTP !== otp && foundOTP.retries > 0) {
         await decrementRetries(username);
       }
