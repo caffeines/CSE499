@@ -1,12 +1,11 @@
 const amqp = require('amqplib');
 
 const { queue } = require('../constant/amqp');
-const { host, port } = require('../config/amqp');
 
 
-const amqpReceiver = async (toQueue, content) => {
+const amqpReceiver = async () => {
   try {
-    const connection = await amqp.connect(`${host}:${port}`);
+    const connection = await amqp.connect(`amqp://rabbitmq:rabbitmq@127.0.0.1:5672/`);
     const channel = await connection.createChannel();
     const que = await channel.assertQueue(queue, { durable: true });
     await channel.prefetch(1);
@@ -29,3 +28,5 @@ const amqpReceiver = async (toQueue, content) => {
   }
 };
 exports.amqpReceiver = amqpReceiver;
+
+amqpReceiver();

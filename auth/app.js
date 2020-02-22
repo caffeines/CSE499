@@ -1,46 +1,28 @@
-/* eslint-disable no-console */
 const http = require('http');
 const cors = require('cors');
+const chalk = require('chalk');
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const expressController = require('express-controller');
+
 const configServer = require('./config/server');
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
-
-console.log('\n AUTH SERVICE \n');
+const routes = require('./routes/auth');
 
 const app = express();
-const server = http.createServer(app);
 app.use(helmet());
+app.use(morgan('dev'));
 app.use(express.json());
-if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(response);
+app.use(routes);
+app.use(express.urlencoded({ extended: true }));
+const server = http.createServer(app);
 
-const setupServer = async () => {
-  mongoose();
-  const bindControllersAsync = () => new Promise((resolve, reject) => {
-    const router = express.Router();
-    app.use(router);
-    expressController.setDirectory(`${__dirname}/controllers`).bind(router, (err) => {
-      if (err) {
-        error(err);
-        reject(err);
-      } else {
-        if (process.env.NODE_ENV !== 'test') console.log('controllers bound successfully');
-        resolve();
-      }
-    });
-  });
-  await bindControllersAsync();
-};
-
-setupServer();
+mongoose();
 const port = Number(process.env.PORT) || configServer.port;
-server.listen(port, () => {
-  if (process.env.NODE_ENV !== 'test') console.log(`server listening on port ${port}...`);
+
+module.exports = server.listen(port, () => {
+  console.log(chalk.bold(`server listening on port ${port}...`));
 });
-module.exports = server;

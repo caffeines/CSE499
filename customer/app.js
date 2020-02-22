@@ -8,8 +8,7 @@ const expressController = require('express-controller');
 const configServer = require('./config/server');
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
-
-console.log('\n CUSTOMER SERVICE \n');
+const { amqpReceiver } = require('./rpc/receiver');
 
 const app = express();
 const server = http.createServer(app);
@@ -19,7 +18,6 @@ if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(response);
-
 const setupServer = async () => {
   mongoose();
   const bindControllersAsync = () => new Promise((resolve, reject) => {

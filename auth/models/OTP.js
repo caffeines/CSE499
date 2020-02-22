@@ -15,11 +15,11 @@ const OTPSchema = new mongoose.Schema({
 
   },
   createdAt: {
-    type: String,
+    type: Number,
     required: true,
   },
   expiresAt: {
-    type: String,
+    type: Number,
     required: true,
   },
   retries: {

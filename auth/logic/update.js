@@ -1,23 +1,24 @@
 const OTP = require('../models/OTP');
 const { getOTPObject } = require('../middleware/OTPObject');
 
-const updateOTP = async (username) => {
+const insertOTP = async (username) => {
   try {
-    const { OTP, retries, expiresAt, createdAt } = getOTPObject(username);
-
+    const { OTP: token, expiresAt, createdAt } = await getOTPObject(username);
+    console.log(username, OTP);
+    
     const updatedOTP = await OTP.findOneAndUpdate(
       { username },
       {
-        $set: { OTP, retries, expiresAt, createdAt }
+        $set: { OTP: token, expiresAt, createdAt, retries: 3 }
       },
-      { new: true },
+      { upsert: true, new: true },
     );
     return updatedOTP;
   } catch (error) {
     return Promise.reject(error);
   }
 }
-exports.updateOTP = updateOTP;
+exports.insertOTP = insertOTP;
 
 const decrementRetries = async (username) => {
   try {

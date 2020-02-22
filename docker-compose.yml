@@ -1,26 +1,7 @@
-version: '3.3'
+version: "3"
 
 services:
-  # mongo:
-  #   build:
-  #     context: ./mongo
-  #     dockerfile: Dockerfile
-  #   container_name: MongoDB
-  #   image: mongodb
-  #   restart: always
-  #   ports:
-  #     - 27017:27017
-  rabbitmq:
-      image: "rabbitmq:3-management"
-      container_name: rabbitmq
-      ports:
-        - "5672:5672"
-        - "15672:15672"
-      volumes:
-        - 'rabbitmq_data:/data'
   auth:
-    # depends_on:
-    #   - mongo
     ports:
       - 4000:4000
     env_file:
@@ -37,16 +18,13 @@ services:
   customer:
     ports:
       - 4001:4001
-    env_file: 
+    env_file:
       - .env
-    build: 
+    build:
       context: ./customer
       dockerfile: Dockerfile.dev
     container_name: customer
     image: caffeines/customer
-    volumes: 
+    volumes:
       - /app/node_modules
       - ./customer:/app
-
-volumes:
-  rabbitmq_data:
