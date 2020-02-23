@@ -8,9 +8,8 @@ const { Kafka } = require('kafkajs');
 const configServer = require('./config/server');
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
-// const routes = require('./routes/auth');
-
-const createLogic = require('./logic/create');
+const routes = require('./routes/customer');
+const resolver = require('./resolvers/index');
 const app = express();
 app.use(helmet());
 app.use(morgan('dev'));
@@ -27,14 +26,14 @@ const kafka = new Kafka({
   brokers: ['kafka:9092']
 });
 // const producer = kafka.producer();
-const topic = 'CreateUser';
+const topic = 'createUser';
 const consumer = kafka.consumer({ groupId: 'customer-group ' });
 
 // app.use((req, res, next) => {  
 //   req.producer = producer;
 //   return next();
 // });
-// app.use(routes);
+app.use(routes);
 
 const port = Number(process.env.PORT) || configServer.port;
 
@@ -43,14 +42,7 @@ const run = async () => {
   await consumer.subscribe({ topic });
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
-      // console.log({
-      //   partition,
-      //   offset: message.offset,
-      //   value: message.value.toString(),
-      // });
-      const customer = await createLogic.createUser({ username: message.value.toString() });
-      console.log(customer);
-      
+      await resolver[topic]({ username: JSON.parse(message.value.toString()) });
     }
   });
   // await producer.connect();

@@ -40,7 +40,7 @@ const AuthController = {
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
         const message = JSON.stringify(username);
         await req.producer.send({
-          topic: 'CreateUser',
+          topic: 'createUser',
           messages: [{ value: message }]
         });
         await deleteUser(username);
