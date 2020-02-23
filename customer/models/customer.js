@@ -5,7 +5,10 @@ const CustomerSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    // unique: true,
+    unique: true,
+  },
+  name: {
+    type: String,
   },
   profilePic: {
     type: String,
@@ -13,8 +16,13 @@ const CustomerSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-  orders: {
-    type: [ObjectId],
-  }
+  orders: [{
+    id: {
+      type: [ObjectId],
+    },
+    description: {
+      type: String,
+    },
+  }]
 });
 module.exports = getModel('User', CustomerSchema);

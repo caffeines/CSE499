@@ -1,16 +1,21 @@
 const findLogic = require('../logic/find');
 const createLogic = require('../logic/create');
 
-const CustomerController = {
+const UserController = {
   profile: async (req, res) => {
     try {
-      const { username } = req.params;
+      const { username } = req.params;      
       const { findUserByUsername } = findLogic;
-      const customer = await findUserByUsername(username);
-      res.ok(customer);
+      const user = await findUserByUsername(username);
+      if (!user) {
+        res.notFound({ message: 'User not found' });
+        return;
+      }
+      res.ok(user);
     } catch (err) {
+      console.log(err);
       res.serverError(err);
     }
   }
 };
-module.exports = CustomerController;
+module.exports = UserController;
