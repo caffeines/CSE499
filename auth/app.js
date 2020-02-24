@@ -1,11 +1,10 @@
 const http = require('http');
 const cors = require('cors');
-const chalk = require('chalk');
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { Kafka } = require('kafkajs');
-const configServer = require('./config/server');
+require('dotenv').config({ path: '.env' });
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
 const routes = require('./routes/auth');
@@ -23,7 +22,7 @@ mongoose();
 
 const kafka = new Kafka({
   clientId: 'auth',
-  brokers: ['kafka:9092']
+  brokers: ['localhost:9092']
 });
 const producer = kafka.producer();
 
@@ -33,12 +32,9 @@ app.use((req, res, next) => {
 });
 app.use(routes);
 
-const port = Number(process.env.PORT) || configServer.port;
-
-const run = async () => {
-  await producer.connect();
-  server.listen(port, () => {
-    console.log(chalk.bold(`server listening on port ${port}...`));
-  });
+const run = async () => {  
+  await producer.connect(); 
 }
-run().catch(err => { console.log(err) });
+run().catch(err => { console.log('Kafka Error: ', err) });
+
+module.exports = app;

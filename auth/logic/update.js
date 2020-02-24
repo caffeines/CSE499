@@ -3,9 +3,7 @@ const { getOTPObject } = require('../middleware/OTPObject');
 
 const insertOTP = async (username) => {
   try {
-    const { OTP: token, expiresAt, createdAt } = await getOTPObject(username);
-    console.log(username, OTP);
-    
+    const { OTP: token, expiresAt, createdAt } = await getOTPObject(username);    
     const updatedOTP = await OTP.findOneAndUpdate(
       { username },
       {

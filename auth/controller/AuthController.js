@@ -16,7 +16,7 @@ const AuthController = {
     try {
       const insertedOtp = await insertOTP(contact);
       // TODO: send sms
-      res.ok(insertedOtp);
+      res.ok({ message: 'OTP sent successfully' });
     } catch (error) {
       console.log(error);
       res.serverError({ message: 'Something went wrong' });
@@ -66,9 +66,9 @@ const AuthController = {
   resendOtp: async (req, res) => {
     try {
       const { username } = req.body;
-      const { updateOTP } = updateLogic;
-      const updatedOPT = await updateOTP(username);
-      res.ok(updatedOPT);
+      const { insertOTP } = updateLogic;
+      const updatedOPT = await insertOTP(username);
+      res.ok({ message: 'OTP sent successfully' });
     } catch (err) {
       console.error(err);
       res.serverError({ message: 'Something went wrong' });
