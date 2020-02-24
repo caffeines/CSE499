@@ -1,12 +1,10 @@
 const http = require('http');
 const cors = require('cors');
-const chalk = require('chalk');
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { Kafka } = require('kafkajs');
 require('dotenv').config({ path: '.env' });
-const configServer = require('./config/server');
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
 const routes = require('./routes/customer');
@@ -36,8 +34,6 @@ app.use((req, res, next) => {
 });
 app.use(routes);
 
-const port = Number(process.env.PORT) || configServer.port;
-
 const run = async () => {
   await consumer.connect();
   await consumer.subscribe({ topic });
@@ -47,13 +43,10 @@ const run = async () => {
         await resolver[topic]({ username: JSON.parse(message.value.toString()) });
       } catch (err) {
         console.error(err);
-        
       }
     }
   });
   await producer.connect();
-  server.listen(port, () => {
-    console.log(chalk.bold(`server listening on port ${port}...`));
-  });
 }
 run().catch(err => { console.log(err) });
+module.exports = server;

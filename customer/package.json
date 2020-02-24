@@ -2,10 +2,10 @@
   "name": "customer",
   "version": "1.0.0",
   "description": "Customer service, this service will deal with all customer.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app"
+    "test": "jest --watch --config ./jest.config.js",
+    "dev": "nodemon index"
   },
   "keywords": [
     "microservice",
@@ -23,5 +23,9 @@
     "kafkajs": "^1.12.0",
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
   }
 }
