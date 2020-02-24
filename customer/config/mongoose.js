@@ -4,7 +4,11 @@ const { envVariableChecker } = require('../lib/utils');
 const values = ['MONGODB_URL'];
 envVariableChecker(values);
 
-const dbURL = process.env.MONGODB_URL;
+let dbURL;
+if (process.env.NODE_ENV === 'test') {
+  dbURL = process.env.MONGODB_TEST_URL;
+}
+else dbURL = process.env.MONGODB_URL;
 
 const mongo = () => {
   mongoose.connect(dbURL, {
@@ -14,7 +18,7 @@ const mongo = () => {
     useUnifiedTopology: true,
   });
   mongoose.connection.on('connected', () => {
-    /* if (process.env.NODE_ENV !== 'test')  */console.log('Mongoose connected successfully');
+    if (process.env.NODE_ENV !== 'test') console.log('Mongoose connected successfully');
   });
 
   mongoose.connection.on('error', (err) => {

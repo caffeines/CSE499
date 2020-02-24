@@ -76,9 +76,19 @@ describe('POST /api/auth/verify-otp', () => {
     expect(res.statusCode).toBe(400);
     expect(res.body.errors.message).toMatch(/OTP not provided/i);
   });
+
+  it('should return 404 and OTP not matched message', async () => {
+    const res = await postVerifyOtp('8801710027639', '123456');
+    expect(res.statusCode).toBe(404);
+    expect(res.body.errors.message).toMatch(/OTP not matched/i);
+  });
+  
   it('should it return 200 and with token', async () => {
     const res = await postVerifyOtp('8801710027639','111111');
     expect(res.statusCode).toBe(200);
-
+    expect(res.body.data.token).not.toBeUndefined();
+    expect(res.body.data.token).not.toBeNull();
+    expect(res.body.data.message).toMatch(/User OTP verified/i);
+    expect(typeof(res.body.data.token)).toBe('string');
   });
 });
