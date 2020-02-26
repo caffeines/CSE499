@@ -1,3 +1,4 @@
+const UUID = require('uuid/v4');
 const updateLogic = require('../logic/update');
 const deleteLogic = require('../logic/delete');
 const findLogic = require('../logic/find');
@@ -7,14 +8,14 @@ const AuthController = {
    * POST /api/auth/enter
    * Send OTP through SMS
    * Expoects: {
-   *    body:  { contact }
+   *    body:  { username }
    * }
    */
   enter: async (req, res, next) => {
     const { insertOTP } = updateLogic;
-    const { contact } = req.body;
+    const { username } = req.body;
     try {
-      const insertedOtp = await insertOTP(contact);
+      const insertedOtp = await insertOTP(username);
       // TODO: send sms
       res.ok({ message: 'OTP sent successfully' });
     } catch (error) {
@@ -39,9 +40,15 @@ const AuthController = {
       const foundOTP = await findOTP(username, otp);
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
         const message = JSON.stringify(username);
-        await req.producer.send({
-          topic: 'createUser',
-          messages: [{ value: message }]
+        const userMsg = { id: UUID(), msg: message };
+        req.authClient.createUser(userMsg, (err, response) => {
+          if (err) {
+            console.error(err);
+            res.serverError({ message: 'Something went wrong' });
+            return;
+          } else {
+            console.log(response);
+          }
         });
         await deleteUser(username);
         res.ok({ message: 'User OTP verified', token: 'username' });

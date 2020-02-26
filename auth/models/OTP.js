@@ -28,4 +28,4 @@ const OTPSchema = new mongoose.Schema({
     default: 3,
   }
 });
-module.exports = getModel('User', OTPSchema);
+module.exports = getModel('OTP', OTPSchema);
