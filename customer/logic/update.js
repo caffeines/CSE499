@@ -1,4 +1,4 @@
-const Customer = require('../models/customer');
+const User = require('../models/user');
 
 /**
  * @async
@@ -9,7 +9,7 @@ const Customer = require('../models/customer');
  */
 const updateProfile = async (username, options) => {
   try {
-    const user = await Customer.updateOne({ username }, { options }, { new: true });
+    const user = await User.updateOne({ username }, { options }, { new: true });
     return user;
   } catch (err) {
     return Promise.reject(err);
@@ -26,7 +26,7 @@ exports.updateProfile = updateProfile;
  */
 const addOrders = async (username, newOrder) => {
   try {
-    const order = await Customer.updateOne(
+    const order = await User.updateOne(
       { username },
       { $push: { orders: { $each: [newOrder], $position: 0 } } },
       { new: true }

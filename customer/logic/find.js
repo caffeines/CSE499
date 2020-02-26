@@ -1,9 +1,9 @@
-const Customer = require('../models/customer');
+const User = require('../models/user');
 
 const findUserByUsername = async (username) => {
   try {
-    const customer = await Customer.findOne({ username });
-    return customer;
+    const user = await User.findOne({ username });
+    return user;
   } catch (err) {
     return Promise.reject(err);
   }

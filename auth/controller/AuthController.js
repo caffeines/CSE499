@@ -2,7 +2,7 @@ const UUID = require('uuid/v4');
 const updateLogic = require('../logic/update');
 const deleteLogic = require('../logic/delete');
 const findLogic = require('../logic/find');
-
+const { createToken } = require('../lib/jwt');
 const AuthController = {
   /**
    * POST /api/auth/enter
@@ -41,16 +41,18 @@ const AuthController = {
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
         const message = JSON.stringify(username);
         const userMsg = { id: UUID(), msg: message };
-        req.authClient.createUser(userMsg, async(err, response) => {
+        req.authClient.createUser(userMsg, async (err, response) => {
           if (err) {
             console.error(err);
             res.serverError({ message: 'Something went wrong' });
             return;
           }
-          const {id, msg} = response;
+          const { id, msg } = response;
           if (id === userMsg.id) {
             await deleteUser(username);
-            res.ok({ message: 'User OTP verified', token: 'username' });
+            const userResp = JSON.parse(msg);
+            const token = await createToken(userResp);
+            res.ok({ message: 'User OTP verified', token, profile: userResp });
           }
         });
         return;

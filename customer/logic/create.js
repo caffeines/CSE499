@@ -1,9 +1,9 @@
-const Customer = require('../models/customer');
+const User = require('../models/user');
 
 const createUser = async (obj) => {
   try {
-    const newCustomer = await new Customer(obj).save();
-    return newCustomer;
+    const newUser = await new User(obj).save();
+    return newUser;
   } catch (error) {
     return Promise.reject(error);
   }
