@@ -1,7 +1,7 @@
 {
-  "name": "customer",
+  "name": "product",
   "version": "1.0.0",
-  "description": "Customer service, this service will deal with all customer.",
+  "description": "product service, this service will deal with all product.",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --coverage --config ./jest.config.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "microservice",
-    "customer"
+    "product"
   ],
   "author": "caffeines",
   "license": "ISC",
@@ -24,7 +24,6 @@
     "grpc": "^1.24.2",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
-    "kafkajs": "^1.12.0",
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1",
     "uuid": "^7.0.1"
