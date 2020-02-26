@@ -11,6 +11,22 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  totalUnit: {
+    type: String,
+    required: true,
+  },
+  unit: {
+    type: String,
+    required: true,
+  },
+  size: {
+    type: Number,
+    required: true,
+  },
+  description: { 
+    type: String,
+    required: true,
+  },
   picture: {
     type: [String],
     required: true,
