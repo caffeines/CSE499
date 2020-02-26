@@ -6,9 +6,8 @@ const morgan = require('morgan');
 require('dotenv').config({ path: '.env' });
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
-const routes = require('./routes/customer');
-const gRPCInit = require('./gRPC/server/index');
-
+const routes = require('./routes/auth');
+const { authClient } = require('./gRPC/client');
 const app = express();
 app.use(helmet());
 app.use(morgan('dev'));
@@ -18,8 +17,11 @@ app.use(response);
 app.use(express.urlencoded({ extended: true }));
 const server = http.createServer(app);
 
-gRPCInit();
 mongoose();
-app.use(routes);
+app.use((req, res, next) => {  
+  req.authClient = authClient;
+  return next();
+});
 
-module.exports = server;
+app.use(routes);
+module.exports = app;
