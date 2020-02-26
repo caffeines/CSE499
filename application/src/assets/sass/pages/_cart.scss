@@ -1,0 +1,143 @@
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+  font-family: 'Pacifico', cursive;
+  &__header {
+    padding: 1.2rem 0;
+  }
+  &-row {
+    padding: 0.8rem 0;
+  }
+
+  &__product {
+    border: none;
+    border-bottom: 1px solid $color-grey-light-3;
+    &-remove {
+      padding: 0 1rem;
+    }
+    &-image {
+      padding: 0 2rem;
+    }
+    &-product {
+    }
+    &-price {
+    }
+    &-quantity {
+    }
+    &-subtotal {
+    }
+  }
+  &-row2 {
+    padding: 2.6rem 0;
+    // padding-left: 7rem;
+    vertical-align: middle;
+    text-align: center;
+  }
+  &__body {
+    font-size: 1.3rem;
+    border-bottom: 1px solid $color-grey-light-3;
+  }
+  &__data {
+    &-remove {
+      &-link {
+        &:link,
+        &:visited {
+          color: black;
+          font-size: 1.5rem;
+          transition: all 0.3s;
+          &:hover {
+            color: $color-red-dark-1;
+          }
+        }
+      }
+    }
+    &-image {
+      &-thumbnail {
+        width: 12rem;
+      }
+    }
+    &-name {
+      &-link {
+        &:link,
+        &:visited {
+          text-decoration: none;
+          font-size: 1.3rem;
+          color: var(--color-black);
+
+          font-weight: bold;
+          transition: all 0.2s;
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+    &-price {
+    }
+    &-quantity {
+      text-align: center;
+      width: 40%;
+      .quantity__reduce,
+      .quantity__increase {
+        &:link,
+        &:visited {
+          text-decoration: none;
+          font-size: 1.6rem;
+          color: var(--color-black);
+        }
+      }
+      .quantity__input {
+        outline: none;
+        border: 1px solid #000;
+        margin: 0 1rem;
+        padding: 1.2rem 0.3rem;
+        text-align: center;
+
+        width: 15%;
+      }
+    }
+    &-subtotal {
+      font-weight: bold;
+    }
+  }
+}
+.coupon {
+  margin-top: 4rem;
+  &-form {
+    display: inline-block;
+    &__input {
+      padding: 1.2rem 1.5rem;
+      border: 1px solid var(--color-primary);
+      font-size: 1.5rem;
+      border-radius: 0.3rem;
+      transition: all 0.2s;
+      margin-right: 2rem;
+
+      &:focus {
+        outline: none;
+        padding: 1.2rem 2rem;
+      }
+    }
+  }
+}
+.cart-total {
+  margin: 10rem 0;
+}
+.cart-details {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.5rem;
+  text-align: left;
+  &__body {
+  }
+  &__row {
+    border-bottom: 1px solid $color-grey-light-3;
+    &-header {
+      width: 20%;
+      padding: 2rem 0;
+    }
+    &-total {
+    }
+  }
+}

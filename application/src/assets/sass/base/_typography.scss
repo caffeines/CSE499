@@ -4,6 +4,7 @@
   text-transform: capitalize;
   font-size: 3rem;
   letter-spacing: 0.2rem;
+  font-family: 'Pacifico', cursive;
   &-span {
     color: var(--color-primary);
     font-family: 'Pacifico', cursive;
@@ -16,5 +17,13 @@
 
   &__mod {
     font-weight: 400;
+  }
+}
+
+///default link style
+.defLink {
+  &:link,
+  &:visited {
+    text-decoration: none;
   }
 }
