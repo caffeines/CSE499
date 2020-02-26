@@ -23,10 +23,10 @@ const createUser = async (call, cb) => {
     const { findUserByUsername } = findLogic;
     let user = await findUserByUsername(username);
     if (!user) {
-      user = await createUser({username});
+      user = await createUser({ username });
     }
     userStream.emit('new_user', user);
-    const userMsg = { id, msg: JSON.stringify(user) }    
+    const userMsg = { id, msg: JSON.stringify(user) }
     cb(null, userMsg);
   } catch (err) {
     console.error(err);
@@ -50,6 +50,8 @@ server.addService(protoDescriptor.auth.AuthService.service, {
 
 const run = () => {
   server.start();
-  console.log(chalk.blue(`auth gRPC server is running on ${AUTH_SERVER_URI}`));
+  if (process.env.NODE_ENV !== 'test') {
+    console.log(chalk.blue(`auth gRPC server is running on ${AUTH_SERVER_URI}`)); 
+  }
 }
 module.exports = run;

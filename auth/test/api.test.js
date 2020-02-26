@@ -8,6 +8,7 @@ const postEnter = async (username) => {
     .set('Accept', 'application/json');
   return res;
 }
+
 describe('POST /api/auth/enter', () => {
   it('should return status 200 with valid contact', async () => {
     const res = await postEnter('8801710027639');
@@ -83,12 +84,14 @@ describe('POST /api/auth/verify-otp', () => {
     expect(res.body.errors.message).toMatch(/OTP not matched/i);
   });
   
-  it('should it return 200 and with token', async () => {
-    const res = await postVerifyOtp('8801710027639','111111');
+  it('should it return 200, with token and profile', async () => {
+    const res = await postVerifyOtp('8801710027639','111111');    
     expect(res.statusCode).toBe(200);
     expect(res.body.data.token).not.toBeUndefined();
     expect(res.body.data.token).not.toBeNull();
     expect(res.body.data.message).toMatch(/User OTP verified/i);
     expect(typeof(res.body.data.token)).toBe('string');
+    expect(res.body.data.profile._id).not.toBeNull();
+    expect(res.body.data.profile._id).not.toBeUndefined();
   });
 });

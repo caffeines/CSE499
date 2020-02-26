@@ -4,7 +4,7 @@ const createLogic = require('../logic/create');
 const UserController = {
   profile: async (req, res) => {
     try {
-      const { username } = req.params;      
+      const { username } = req.admin || req.user ;      
       const { findUserByUsername } = findLogic;
       const user = await findUserByUsername(username);
       if (!user) {

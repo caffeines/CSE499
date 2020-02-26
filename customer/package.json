@@ -4,7 +4,7 @@
   "description": "Customer service, this service will deal with all customer.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch --config ./jest.config.js",
+    "test": "jest --watch --coverage --config ./jest.config.js",
     "dev": "nodemon index"
   },
   "keywords": [
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.3",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -22,6 +23,7 @@
     "express-controller": "^0.3.2",
     "grpc": "^1.24.2",
     "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
     "kafkajs": "^1.12.0",
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1",

@@ -5,8 +5,6 @@ const values = ['MONGODB_URL'];
 envVariableChecker(values);
 
 let dbURL;
-console.log(process.env.NODE_ENV);
-
 if (process.env.NODE_ENV === 'test') {
   dbURL = process.env.MONGODB_TEST_URL;
 }
