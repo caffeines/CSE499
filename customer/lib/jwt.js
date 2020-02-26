@@ -9,7 +9,7 @@ const verifyToken = async (token) => {
     const payload = await verifyAsync(token, secret);
     return payload;
   } catch (err) {
-    console.error(err);
+    if (process.env.NODE_ENV !== 'test') console.error(err);
     return null;
   }
 };

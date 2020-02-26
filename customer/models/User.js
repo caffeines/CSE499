@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongoose').SchemaTypes;
 const { getModel } = require('../lib/utils');
-const CustomerSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -25,4 +25,4 @@ const CustomerSchema = new mongoose.Schema({
     },
   }]
 });
-module.exports = getModel('User', CustomerSchema);
+module.exports = getModel('User', UserSchema);

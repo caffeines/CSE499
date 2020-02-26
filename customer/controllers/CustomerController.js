@@ -20,7 +20,7 @@ const UserController = {
   updateProfile: async (req, res) => {
     try {
       const { username } = req.user;
-      const { name, profilePic, address } = req.body;
+      const { name, profilePic, address } = req.body;      
       const { updateProfile } = updateLogic;
       const updatedUser = await updateProfile(username, { name, profilePic, address });
       res.ok(updatedUser);
