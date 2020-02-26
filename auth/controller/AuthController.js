@@ -41,17 +41,18 @@ const AuthController = {
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
         const message = JSON.stringify(username);
         const userMsg = { id: UUID(), msg: message };
-        req.authClient.createUser(userMsg, (err, response) => {
+        req.authClient.createUser(userMsg, async(err, response) => {
           if (err) {
             console.error(err);
             res.serverError({ message: 'Something went wrong' });
             return;
-          } else {
-            console.log(response);
+          }
+          const {id, msg} = response;
+          if (id === userMsg.id) {
+            await deleteUser(username);
+            res.ok({ message: 'User OTP verified', token: 'username' });
           }
         });
-        await deleteUser(username);
-        res.ok({ message: 'User OTP verified', token: 'username' });
         return;
       } else if (foundOTP && foundOTP.OTP !== otp && foundOTP.retries > 0) {
         await decrementRetries(username);

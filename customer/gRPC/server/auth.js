@@ -26,12 +26,7 @@ const createUser = async (call, cb) => {
       user = await createUser({username});
     }
     userStream.emit('new_user', user);
-    const userMsg = {
-      id,
-      msg: JSON.stringify(user),
-    }
-    console.log(userMsg);
-    
+    const userMsg = { id, msg: JSON.stringify(user) }    
     cb(null, userMsg);
   } catch (err) {
     console.error(err);
@@ -44,7 +39,7 @@ const createUser = async (call, cb) => {
 
 const watchNewUser = (stream) => {
   userStream.on('new_user', (user) => {
-    stream.write(user)
+    stream.write(user);
   });
 }
 
