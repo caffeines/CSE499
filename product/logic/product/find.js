@@ -12,7 +12,9 @@ exports.findProductById = findProductById;
 
 const findProductsByName = async (name) => {
   try {
-    const product = await Product.find({ name }).select({ _id: 1, name: 1, picture: 1 });
+    const re = new RegExp(name);
+    const product = await Product.find({ 'name' :{ $regex: re, $options: 'i' }}).select({ _id: 1, name: 1, picture: 1 });
+    return product;
   } catch (err) {
     return Promise.reject(err);
   }
@@ -23,10 +25,10 @@ const findProducts = async (lastId, category, subCategory, page) => {
   try {
     let query = {};
     const limit = 20;
+    page = page || 1;
     if (category) query['category'] = category;
     if (subCategory) query['subCategory'] = subCategory;
-    if (!lastId) query['_id'] = { $lt: lastId };
-    console.log('Query: ', query);
+    if (lastId) query['_id'] = { $gt: lastId };    
     const products = await Product.find(query).limit(limit);
     const totalProducts = await Product.countDocuments();
     const hasMore = page * limit < totalProducts;

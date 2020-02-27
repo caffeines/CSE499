@@ -1,6 +1,6 @@
 const { createProduct } = require('../logic/product/create');
 const app = require('../app');
-describe('PRODUCT  create logic', () => {
+describe('LOGIC create', () => {
   it('should create new product', async () => {
     const productObj = {
       name: 'Nazirshail',
