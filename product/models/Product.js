@@ -12,7 +12,7 @@ const ProductSchema = new mongoose.Schema({
     required: true,
   },
   totalUnit: {
-    type: String,
+    type: Number,
     required: true,
   },
   unit: {

@@ -16,6 +16,7 @@ const mongo = () => {
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
+    // replicaSet: 'rs'
   });
   mongoose.connection.on('connected', () => {
     if (process.env.NODE_ENV !== 'test') console.log('Mongoose connected successfully');

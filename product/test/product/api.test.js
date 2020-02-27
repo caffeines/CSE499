@@ -1,4 +1,4 @@
-const app = require('../app');
+const app = require('../../app');
 const request = require('supertest');
 const token = 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijg4MDE3MTAwMjc2MzkiLCJyb2xlIjoiY3VzdG9tZXIiLCJpZCI6IjVlNTYzZTk1YmU2OGIwN2ZmYWEzMzM0YyIsImlhdCI6MTU4MjcxNTUwNCwiZXhwIjoxNTg1NzE1NTA0fQ.TvZsAXKGZ2Ah0EL2vGxQctKYxhnZKz4KcVWhS3i5_SM'
 

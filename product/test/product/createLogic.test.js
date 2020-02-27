@@ -1,5 +1,5 @@
-const { createProduct } = require('../logic/product/create');
-const app = require('../app');
+const { createProduct } = require('../../logic/product/create');
+const app = require('../../app');
 describe('LOGIC create', () => {
   it('should create new product', async () => {
     const productObj = {

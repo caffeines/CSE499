@@ -1,7 +1,7 @@
-const { findProductById, findProductsByName, findProducts } = require('../logic/product/find');
-const { createProduct } = require('../logic/product/create');
-const Product = require('../models/Product');
-const app = require('../app');
+const { findProductById, findProductsByName, findProducts } = require('../../logic/product/find');
+const { createProduct } = require('../../logic/product/create');
+const Product = require('../../models/Product');
+const app = require('../../app');
 
 let id;
 const create = async (n) => {
@@ -22,9 +22,12 @@ const create = async (n) => {
 }
 
 describe('LOGIC findProductById', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
+  });
+  afterEach(async () => {
+    await Product.deleteMany({});
   });
   it('should return a product', async () => {
     const product = await findProductById(id);
@@ -35,9 +38,12 @@ describe('LOGIC findProductById', () => {
 });
 
 describe('LOGIC findProductsByName', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
+  });
+  afterEach(async () => {
+    await Product.deleteMany({});
   });
   it('should return product name with Nazirshail for Nazirs', async () => {
     const [product] = await findProductsByName('Nazirs');
@@ -66,6 +72,9 @@ describe('LOGIC findProducts', () => {
   beforeAll(async () => {
     await Product.deleteMany({});
     await create(100);
+  });
+  afterAll(async () => {
+    await Product.deleteMany({});
   });
   it('should return first 20 products for no params', async () => {
     const { products, hasMore } = await findProducts();
