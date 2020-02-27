@@ -1,6 +1,6 @@
 const productCreateValidator = (req, res, next) => {
   const userInfo = Object.keys(req.body);
-  const allowedInfo = ['name', 'price', 'totalUnit', 'unit', 'size', 'description', 'picture', 'category'];
+  const allowedInfo = ['name', 'price', 'totalUnit', 'unit', 'size', 'description', 'picture', 'category', 'subCategory'];
   const isValidOperation = userInfo.every((info) => allowedInfo.includes(info));
 
   if (!isValidOperation) {    

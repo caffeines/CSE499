@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "express-controller": "^0.3.2",
     "google-libphonenumber": "^3.2.6",
+    "grpc": "^1.24.2",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.11",

@@ -10,7 +10,8 @@ const productObj = {
   unit: 'kg',
   size: 1,
   totalUnit: 500,
-  category: 'Rice'
+  category: 'Rice',
+  subCategory: 'Rice'
 }
 
 describe('POST create product', () => {

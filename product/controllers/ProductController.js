@@ -1,4 +1,4 @@
-const { createProduct } = require('../logic/create');
+const { createProduct } = require('../logic/product/create');
 
 const productController = {
   searchProduct: async (req, res) => {

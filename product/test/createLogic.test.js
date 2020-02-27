@@ -1,4 +1,4 @@
-const { createProduct } = require('../logic/create');
+const { createProduct } = require('../logic/product/create');
 const app = require('../app');
 describe('PRODUCT  create logic', () => {
   it('should create new product', async () => {
@@ -10,7 +10,8 @@ describe('PRODUCT  create logic', () => {
       unit: 'kg',
       size: 1,
       totalUnit: 500,
-      category: 'Rice'
+      category: 'Rice',
+      subCategory: 'Rice'
     }
     const product = await createProduct(productObj);
     expect(product).not.toBeNull();
