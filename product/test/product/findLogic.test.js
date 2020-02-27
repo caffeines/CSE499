@@ -33,7 +33,7 @@ describe('LOGIC findProductById', () => {
     const product = await findProductById(id);
     expect(product).not.toBeNull();
     expect(product).not.toBeUndefined();
-    expect(product.name).toMatch(/Nazirshail/i);
+    expect(product.name).toMatch(/Nazirshail10/i);
   });
 });
 
@@ -89,8 +89,8 @@ describe('LOGIC findProducts', () => {
     const { products } = await findProducts(lastId);
     expect(products).not.toBeNull();
     expect(products).not.toBeUndefined();
-    expect(products.length).toBe(20);
-    expect(products[19].name).toMatch('Nazirshail40');    
+    expect(products.length).toBe(20);    
+    expect(products[19].name).toMatch(/Nazirshail/i);    
   });
 
   it('should return Rice category products for Rice as param', async () => {
