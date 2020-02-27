@@ -59,5 +59,9 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  subCategory: {
+    type: String,
+    required: true,
+  }
 });
 module.exports = getModel('Product', ProductSchema);

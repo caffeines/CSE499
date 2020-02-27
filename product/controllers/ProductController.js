@@ -11,7 +11,7 @@ const productController = {
       res.serverError({ message: 'Something went wrong' });
     }
   },
-  
+
   getProductById: async (req, res) => {
     const { id } = req.params;
     console.log('product id: ', id);
@@ -29,7 +29,7 @@ const productController = {
   },
 
   getProducts: async (req, res) => {
-    const { id, category, subcategory } = req.params;
+    const { id, category, subcategory, page } = req.query;
     try {
       const products = await findProducts(id, category, subcategory);
       res.ok(products)
