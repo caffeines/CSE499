@@ -13,7 +13,7 @@ exports.findProductById = findProductById;
 const findProductsByName = async (name) => {
   try {
     const re = new RegExp(name);
-    const product = await Product.find({ 'name' :{ $regex: re, $options: 'i' }}).select({ _id: 1, name: 1, picture: 1 });
+    const product = await Product.find({ 'name': { $regex: re, $options: 'i' } }).select({ _id: 1, name: 1, picture: 1 });
     return product;
   } catch (err) {
     return Promise.reject(err);
@@ -28,7 +28,7 @@ const findProducts = async (lastId, category, subCategory, page) => {
     page = page || 1;
     if (category) query['category'] = category;
     if (subCategory) query['subCategory'] = subCategory;
-    if (lastId) query['_id'] = { $gt: lastId };    
+    if (lastId) query['_id'] = { $gt: lastId };
     const products = await Product.find(query).limit(limit);
     const totalProducts = await Product.countDocuments();
     const hasMore = page * limit < totalProducts;
@@ -38,3 +38,14 @@ const findProducts = async (lastId, category, subCategory, page) => {
   }
 }
 exports.findProducts = findProducts;
+
+const findByTotalSell = async () => {
+  try {
+    const product = await Product.find({}).sort({ 'totalNumberOfSell': -1 });
+    return product;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+}
+exports.findByTotalSell = findByTotalSell;
+
