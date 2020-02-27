@@ -55,10 +55,6 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  comments: {
-    type: [ObjectId],
-    ref: 'Comment',
-  },
   category: {
     type: String,
     required: true,

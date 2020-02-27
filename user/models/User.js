@@ -7,6 +7,17 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  password: {
+    type: String,
+  },
+  role: {
+    type: String,
+    default: 'public',
+  },
+  isVarified: {
+    type: Boolean,
+    default: false,
+  },
   name: {
     type: String,
   },
@@ -15,14 +26,6 @@ const UserSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-  },
-  orders: [{
-    id: {
-      type: [ObjectId],
-    },
-    description: {
-      type: String,
-    },
-  }]
+  }
 });
 module.exports = getModel('User', UserSchema);

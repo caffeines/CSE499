@@ -5,13 +5,50 @@ const findLogic = require('../logic/find');
 const { createToken } = require('../lib/jwt');
 const AuthController = {
   /**
+   * POST /api/auth/signup
+   * Create new user
+   * Expects : {
+   *    body: { username, password }
+   * }
+   */
+  signUp: async (req, res) => {
+    const { username, password } = req.body;
+    try {
+      const msg = JSON.stringify({ username, password });
+      const userMsg = { id: UUID(), msg };
+      req.authClient.signUp(userMsg, async(err, response) => {
+        if (err) {
+          console.error(err);
+          res.serverError({ message: 'Something went wrong' });
+          return;
+        }
+        const { id, msg } = response;
+        if (id === userMsg.id) {
+          const { insertOTP } = updateLogic;
+          try {
+            const otp = await insertOTP(username);
+            res.ok({ message: 'OTP sent successfully' });
+            return;
+          } catch (err2) {
+            console.error(err2);
+            res.serverError({ message: 'Something went wrong' });
+          }
+        }
+      });
+    } catch (err) {
+      console.error(err);
+      res.serverError({ message: 'Something went wrong' });
+    }
+  },
+
+  /**
    * POST /api/auth/enter
    * Send OTP through SMS
-   * Expoects: {
+   * Expects: {
    *    body:  { username }
    * }
    */
-  enter: async (req, res, next) => {
+  enter: async (req, res) => {
     const { insertOTP } = updateLogic;
     const { username } = req.body;
     try {
