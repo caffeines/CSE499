@@ -10,18 +10,20 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@mdi/font": "^3.6.95",
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "core-js": "^3.4.4",
     "register-service-worker": "^1.6.2",
     "roboto-fontface": "*",
     "typeface-pacifico": "^1.1.3",
     "vue": "^2.6.10",
     "vue-carousel": "^0.18.0",
+    "vue-country-region-select": "^2.0.12",
     "vue-router": "^3.1.3",
     "vuetify": "^2.1.0",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
+    "@mdi/font": "^3.9.97",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-nightwatch": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

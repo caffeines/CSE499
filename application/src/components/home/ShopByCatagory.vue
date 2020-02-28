@@ -2,14 +2,15 @@
   <div>
     <v-container class="my-6">
       <h2 class="heading-primary my-2" align="center">
-        shop by <span class="heading-primary-span">catagories</span>
+        shop by
+        <span class="heading-primary-span">catagories</span>
       </h2>
       <p class="catagory-text" align="center">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam velit
         pariatur magnam fuga maiores
       </p>
       <v-row class="mt-5">
-        <v-col cols="6" md="3" sm="12" align="center">
+        <v-col cols="12" md="3" sm="6" xs="12" align="center">
           <div class="cat-vegetables">
             <img
               src="@/assets/img/cat-veg.png"
@@ -25,7 +26,7 @@
             </p>
           </div>
         </v-col>
-        <v-col cols="6" md="3" sm="12" align="center">
+        <v-col cols="12" md="3" sm="6" xs="12" align="center">
           <div class="cat-vegetables">
             <img
               src="@/assets/img/cat-veg.png"
@@ -41,7 +42,7 @@
             </p>
           </div>
         </v-col>
-        <v-col cols="6" md="3" sm="12" align="center">
+        <v-col cols="12" md="3" sm="6" xs="12" align="center">
           <div class="cat-vegetables">
             <img
               src="@/assets/img/cat-veg.png"
@@ -57,7 +58,7 @@
             </p>
           </div>
         </v-col>
-        <v-col cols="6" md="3" sm="12" align="center">
+        <v-col cols="12" md="3" sm="6" xs="12" align="center">
           <div class="cat-vegetables">
             <img
               src="@/assets/img/cat-veg.png"

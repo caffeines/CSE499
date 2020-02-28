@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const { secret, TTL: jwtTTL } = require('../config/jwt');
 
 const signAsync = Promise.promisify(jwt.sign);
-const verifyAsync = Promise.promisify(jwt.verify);
 
 /**
  * @static
@@ -13,12 +12,13 @@ const verifyAsync = Promise.promisify(jwt.verify);
  */
 const createToken = async (user) => {
   const {
-    username, _id: id,
+    username, role, _id: id,
   } = user;
-  const TTL = 50000 * 60;
+  let TTL;
+  if (role === 'admin' || role === 'moderator') TTL = 50000 * 60;
   const payload = {
     username,
-    role: 'customer',
+    role,
     id,
   };
 
@@ -26,21 +26,8 @@ const createToken = async (user) => {
     const token = await signAsync(payload, secret, { expiresIn: TTL || jwtTTL });
     return token;
   } catch (err) {
-    error(err);
+    console.error(err);
     return null;
   }
 };
-
 exports.createToken = createToken;
-
-const verifyToken = async (token) => {
-  try {
-    const payload = await verifyAsync(token, secret);
-    return payload;
-  } catch (err) {
-    error(err);
-    return null;
-  }
-};
-
-exports.verifyToken = verifyToken;
