@@ -1,7 +1,7 @@
-const { createProduct } = require('../../logic/product/create');
-const { updateProductById, makeDiscount, makeDiscountZero, makeSell } = require('../../logic/product/update');
-const Product = require('../../models/Product');
-const app = require('../../app');
+const { createProduct } = require('../../../logic/product/create');
+const { updateProductById, makeDiscount, makeDiscountZero, makeSell } = require('../../../logic/product/update');
+const Product = require('../../../models/Product');
+const app = require('../../../app');
 
 let id;
 const create = async (n) => {
@@ -21,7 +21,7 @@ const create = async (n) => {
   }
 }
 
-describe('LOGIC updateProductById', () => {
+describe.skip('LOGIC updateProductById', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
@@ -38,7 +38,7 @@ describe('LOGIC updateProductById', () => {
   });
 });
 
-describe('LOGIC makeSell', () => {
+describe.skip('LOGIC makeSell', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
@@ -55,7 +55,7 @@ describe('LOGIC makeSell', () => {
   });
 });
 
-describe('LOGIC makeDiscount', () => {
+describe.skip('LOGIC makeDiscount', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
@@ -73,7 +73,7 @@ describe('LOGIC makeDiscount', () => {
   });
 });
 
-describe('LOGIC makeDiscountZero', () => {
+describe.skip('LOGIC makeDiscountZero', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);

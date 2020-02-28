@@ -1,7 +1,7 @@
-const { findProductById, findProductsByName, findProducts } = require('../../logic/product/find');
-const { createProduct } = require('../../logic/product/create');
-const Product = require('../../models/Product');
-const app = require('../../app');
+const { findProductById, findProductsByName, findProducts } = require('../../../logic/product/find');
+const { createProduct } = require('../../../logic/product/create');
+const Product = require('../../../models/Product');
+const app = require('../../../app');
 
 let id;
 const create = async (n) => {
@@ -21,7 +21,7 @@ const create = async (n) => {
   }
 }
 
-describe('LOGIC findProductById', () => {
+describe.skip('LOGIC findProductById', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
@@ -37,7 +37,7 @@ describe('LOGIC findProductById', () => {
   });
 });
 
-describe('LOGIC findProductsByName', () => {
+describe.skip('LOGIC findProductsByName', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
     await create(10);
@@ -67,7 +67,7 @@ describe('LOGIC findProductsByName', () => {
   });
 });
 
-describe('LOGIC findProducts', () => {
+describe.skip('LOGIC findProducts', () => {
   let lastId;
   beforeAll(async () => {
     await Product.deleteMany({});

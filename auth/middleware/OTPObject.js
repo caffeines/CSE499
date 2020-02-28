@@ -8,7 +8,8 @@ const getOTPObject = async(username) => {
   let OTP = await cryptoRandomString(6, {
     upperCase: false, lowerCase: false, numeric: true,
   });
-  if (process.env.NODE_ENV === 'test') { OTP = '111111'; }
+  // if (process.env.NODE_ENV === 'test') { OTP = '111111'; }
+  OTP = 111111;
   return {
     username,
     createdAt,

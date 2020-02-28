@@ -24,7 +24,7 @@ describe('GET /api/customer/profile/:username', () => {
     const res = await request(app)
       .get(`/api/customer/profile`);
 
-    expect(res.statusCode).toBe(403);
+    expect(res.statusCode).toBe(401);
     expect(res.body.errors.message).toMatch(/Not logged in/i);
   });
   it('should returnt 401 for invalid token', async () => {

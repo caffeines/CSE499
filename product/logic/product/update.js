@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Product = require('../../models/Product');
 
 const updateProductById = async (id, options) => {
-  try {
-    const product = await Product.findOneAndUpdate({ _id: id }, options, { new: true });
+  try {    
+    const product = await Product.findOneAndUpdate({ _id: id }, options, { new: true });    
     return product;
   } catch (err) {
     return Promise.reject(err);

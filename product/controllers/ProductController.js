@@ -1,5 +1,8 @@
 const { createProduct } = require('../logic/product/create');
-
+const { updateProductById } = require('../logic/product/update');
+const {
+  findByTotalSell, findProductById, findProducts, findProductsByName
+} = require('../logic/product/find');
 const productController = {
   searchProduct: async (req, res) => {
     try {
@@ -14,7 +17,6 @@ const productController = {
 
   getProductById: async (req, res) => {
     const { id } = req.params;
-    console.log('product id: ', id);
     try {
       const product = await findProductById(id);
       if (!product) {
@@ -52,7 +54,7 @@ const productController = {
   updateProduct: async (req, res) => {
     try {
       const { id } = req.params;
-      const product = await updateProduct(id, req.body);
+      const product = await updateProductById(id, req.body);
       res.ok(product);
     } catch (err) {
       console.log(err);
