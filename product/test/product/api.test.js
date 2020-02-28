@@ -17,17 +17,19 @@ const productObj = {
 describe('POST create product', () => {
   it('should return 403 forbidden for without token', async () => {
     const res = await request(app)
-      .post('/api/product/create')
+      .post('/api/product')
       .send(productObj);
     expect(res.statusCode).toBe(403);
   });
+
   it('should return 200 for valid request and token', async () => {
     const res = await request(app)
-      .post('/api/product/create')
+      .post('/api/product')
       .send(productObj)
       .set('Authorization', token);
           
     expect(res.statusCode).toBe(200);
   });
-  
+
+
 });

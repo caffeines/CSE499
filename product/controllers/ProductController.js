@@ -39,7 +39,7 @@ const productController = {
     }
   },
 
-  create: async (req, res) => {
+  createProduct: async (req, res) => {
     try {
       const product = await createProduct(req.body);
       res.ok(product);
@@ -49,7 +49,7 @@ const productController = {
     }
   },
 
-  update: async (req, res) => {
+  updateProduct: async (req, res) => {
     try {
       const { id } = req.params;
       const product = await updateProduct(id, req.body);
@@ -60,7 +60,7 @@ const productController = {
     }
   },
 
-  delete: async (req, res) => {
+  deleteProduct: async (req, res) => {
     try {
       const { id } = req.body;
       await deleteProduct(id);

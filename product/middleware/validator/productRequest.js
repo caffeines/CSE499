@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const productCreateValidator = (req, res, next) => {
   const userInfo = Object.keys(req.body);
   const allowedInfo = ['name', 'price', 'totalUnit', 'unit', 'size', 'description', 'picture', 'category', 'subCategory'];
@@ -26,3 +28,15 @@ const productCreateValidator = (req, res, next) => {
   next();
 }
 exports.productCreateValidator = productCreateValidator;
+
+const deleteProductValidator = (req, res, next) => {
+  const { id } = req.body;
+  const isValid = mongoose.Types.ObjectId.isValid(id);
+
+  if (!id || !isValid) {
+    res.badRequest({ message: 'Invalid request' });
+    return;
+  }
+  next();
+}
+exports.deleteProductValidator = deleteProductValidator;
