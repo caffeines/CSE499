@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: auth-pod
+  labels:
+    components: auth-server
+spec:
+  containers:
+    - name: auth
+      image: caffeines/cse499:auth
+      ports:
+        - containerPort: 4000
+  imagePullSecrets:
+    - name: regcred
