@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: caffeines/cse499:auth
+          image: caffeines/auth
           ports:
             - containerPort: 4000
       imagePullSecrets:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: user
-          image: caffeines/cse499:user
+          image: caffeines/user
           ports:
             - containerPort: 4001
       imagePullSecrets:

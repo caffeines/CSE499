@@ -1,0 +1,24 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: microservices
+build:
+  local:
+    push: false
+  artifacts:
+    - image: caffeines/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+          - src: '**/*.proto'
+            dest: .
+deploy:
+  kubectl:
+    manifests:
+      - k8s/auth-deployment.yaml
+      - k8s/auth-cluster-ip-service.yaml
+
