@@ -31,9 +31,9 @@ const productController = {
   },
 
   getProducts: async (req, res) => {
-    const { id, category, subcategory, page } = req.query;
-    try {
-      const products = await findProducts(id, category, subcategory);
+    const { lastId, category, subcategory, page } = req.query;
+    try {      
+      const products = await findProducts(lastId, category, subcategory, page);
       res.ok(products)
     } catch (err) {
       console.log(err);
