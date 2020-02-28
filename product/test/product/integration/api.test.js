@@ -120,11 +120,45 @@ describe('PRODUCT API', () => {
       const res = await request(app)
         .get(`/api/product?subcategory=Y`);
       expect(res.statusCode).toBe(200);
-      expect(res.body.data.products.length).toEqual(20);
-      expect(res.body.data.hasMore).toBeTruthy();
       res.body.data.products.forEach(product => {
         expect(product.subCategory).toMatch(/Y/i);
       });
     });
+  });
+  describe('GET search product', () => {
+    it('should return 200 and with name nazir', async () => {
+      await create(100);
+      const res = await request(app)
+        .get(`/api/product/search/nazir`);
+      expect(res.statusCode).toBe(200);
+      res.body.data.forEach(product => {
+        expect(product.name).toMatch(/nazir/i);
+      });      
+    });
+  });
+  describe('DELETE product', () => {
+    it('should return 403 for public token', async () => {
+      const product = await new Product(productObj).save();
+      const res = await request(app)
+        .delete(`/api/product`)
+        .send({ id: product._id })
+        .set('Authorization', `bearer ${jwtPublicToken}`);
+      expect(res.statusCode).toBe(403);
+    });
+
+    it('should delete a product for a product id', async () => {
+      const product = await new Product(productObj).save();
+      const res = await request(app)
+        .delete(`/api/product`)
+        .send({ id: product._id })
+        .set('Authorization', token);
+      expect(res.statusCode).toBe(200);
+      expect(res.body.data.message).toMatch(/success/i);
+
+      const res2 = await request(app)
+        .get(`/api/product/${product._id}`);      
+      expect(res2.statusCode).toBe(404);
+    });
+
   });
 });

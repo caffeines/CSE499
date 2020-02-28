@@ -1,5 +1,6 @@
 const { createProduct } = require('../logic/product/create');
 const { updateProductById } = require('../logic/product/update');
+const { deleteProductById } = require('../logic/product/delete');
 const {
   findByTotalSell, findProductById, findProducts, findProductsByName
 } = require('../logic/product/find');
@@ -64,8 +65,8 @@ const productController = {
 
   deleteProduct: async (req, res) => {
     try {
-      const { id } = req.body;
-      await deleteProduct(id);
+      const { id } = req.body;      
+      await deleteProductById(id);
       res.ok({ message: 'Deleted successfully' });
     } catch (err) {
       console.log(err);
