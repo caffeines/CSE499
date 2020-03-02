@@ -7,7 +7,6 @@ require('dotenv').config({ path: '.env' });
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
 // const routes = require('./routes/auth');
-// const { authClient } = require('./gRPC/client');
 const app = express();
 app.use(helmet());
 app.use(morgan('dev'));
