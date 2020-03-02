@@ -48,7 +48,7 @@ const OrederSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "In queue", // accepted -> delivered
+    default: "inQueue", // accepted -> delivered
   },
   deliveryMan: {
     type: String,
@@ -68,7 +68,7 @@ const OrederSchema = new mongoose.Schema({
   },
   orderType: {
     type: String,
-    default: 'pre order',
+    default: 'preOrder',
   },
   ratting: {
     type: Number,
