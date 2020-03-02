@@ -16,9 +16,22 @@ build:
             dest: .
           - src: '**/*.proto'
             dest: .
+    - image: caffeines/user
+      context: user
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+          - src: '**/*.proto'
+            dest: .
 deploy:
   kubectl:
     manifests:
       - k8s/auth-deployment.yaml
       - k8s/auth-cluster-ip-service.yaml
+      - k8s/user-deployment.yaml
+      - k8s/user-cluster-ip-service.yaml
+      - k8s/ingress-service.yaml
 

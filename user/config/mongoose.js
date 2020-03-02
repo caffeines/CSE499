@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'test') {
   dbURL = process.env.MONGODB_TEST_URL;
 }
 else dbURL = process.env.MONGODB_URL;
-
+console.log(dbURL);
 const mongo = () => {
   mongoose.connect(dbURL, {
     useCreateIndex: true,
