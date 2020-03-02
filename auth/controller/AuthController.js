@@ -3,6 +3,8 @@ const updateLogic = require('../logic/update');
 const deleteLogic = require('../logic/delete');
 const findLogic = require('../logic/find');
 const { createToken } = require('../lib/jwt');
+const { amqpSender } = require('../rabbitMQ/sender');
+
 const AuthController = {
   /**
    * POST /api/auth/signup
@@ -16,7 +18,7 @@ const AuthController = {
     try {
       const msg = JSON.stringify({ username, password });
       const userMsg = { id: UUID(), msg };
-      req.authClient.signUp(userMsg, async(err, response) => {
+      req.authClient.signUp(userMsg, async (err, response) => {
         if (err) {
           console.error(err);
           res.serverError({ message: 'Something went wrong' });
@@ -75,23 +77,13 @@ const AuthController = {
 
     try {
       const foundOTP = await findOTP(username, otp);
+      
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
-        const message = JSON.stringify(username);
-        const userMsg = { id: UUID(), msg: message };
-        req.authClient.createUser(userMsg, async (err, response) => {
-          if (err) {
-            console.error(err);
-            res.serverError({ message: 'Something went wrong' });
-            return;
-          }
-          const { id, msg } = response;
-          if (id === userMsg.id) {
-            await deleteUser(username);
-            const userResp = JSON.parse(msg);
-            const token = await createToken(userResp);
-            res.ok({ message: 'User OTP verified', token, profile: userResp });
-          }
-        });
+        const msg = await amqpSender('user', { username, resolver: 'createUser' });
+        console.log(msg);
+        
+        // const token = await createToken(msg);
+        res.ok({ message: 'User OTP verified', token: 'asdas', profile: msg });
         return;
       } else if (foundOTP && foundOTP.OTP !== otp && foundOTP.retries > 0) {
         await decrementRetries(username);

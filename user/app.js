@@ -7,8 +7,8 @@ require('dotenv').config({ path: '.env' });
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
 const routes = require('./routes/customer');
-const gRPCInit = require('./gRPC/server/index');
-
+// const gRPCInit = require('./gRPC/server/index');
+const { amqpReceiver } = require('./rabbitMQ/receiver');
 const app = express();
 app.use(helmet());
 app.use(morgan('dev'));
@@ -18,7 +18,8 @@ app.use(response);
 app.use(express.urlencoded({ extended: true }));
 const server = http.createServer(app);
 
-gRPCInit();
+// gRPCInit();
+amqpReceiver().catch(err => console.log(err));
 mongoose();
 app.use(routes);
 
