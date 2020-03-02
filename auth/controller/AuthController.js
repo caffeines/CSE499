@@ -79,11 +79,13 @@ const AuthController = {
       const foundOTP = await findOTP(username, otp);
       
       if (foundOTP && foundOTP.OTP === otp && foundOTP.retries > 0) {
-        const msg = await amqpSender('user', { username, resolver: 'createUser' });
-        console.log(msg);
-        
-        // const token = await createToken(msg);
-        res.ok({ message: 'User OTP verified', token: 'asdas', profile: msg });
+        const { data, error, status } = await amqpSender('user', { username, resolver: 'createUser' });        
+        if (status === 200) {
+          const token = await createToken(data);
+          res.ok({ message: 'User OTP verified', token, profile: data });
+        } else {
+          throw new Error(error);
+        }
         return;
       } else if (foundOTP && foundOTP.OTP !== otp && foundOTP.retries > 0) {
         await decrementRetries(username);

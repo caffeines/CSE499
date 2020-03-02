@@ -16,14 +16,23 @@ const amqpReceiver = async () => {
     channel.consume(queue, async function reply(msg) {
       const content = JSON.parse(msg.content.toString());
       console.log(chalk.black.bgYellow.bold('AMQP '), `Message: `, content);
-      
+
       const { username, resolver } = content;
-      const res = await amqpResolver[resolver](username);
+      let res;
+      if (!amqpResolver[resolver]) {
+        res = { error: 'Invalid resolver', status: 400 };
+      }
+      else res = {
+        data: await amqpResolver[resolver](username),
+        status: 200
+      };
       const buffer = Buffer.from(JSON.stringify(res));
       channel.sendToQueue(
         msg.properties.replyTo,
-        buffer, { correlationId: msg.properties.correlationId });
-        channel.ack(msg);
+        buffer,
+        { correlationId: msg.properties.correlationId }
+      );
+      channel.ack(msg);
     });
   } catch (err) {
     console.error(err);
