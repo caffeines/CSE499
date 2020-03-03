@@ -82,7 +82,8 @@ const AuthController = {
         const { data, error, status } = await amqpSender('user', { username, resolver: 'createUser' });        
         if (status === 200) {
           const token = await createToken(data);
-          res.ok({ message: 'User OTP verified', token, profile: data });
+		await deleteUser(username);
+	res.ok({ message: 'User OTP verified', token, profile: data });
         } else {
           throw new Error(error);
         }

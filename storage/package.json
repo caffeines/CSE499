@@ -1,0 +1,35 @@
+{
+  "name": "storage",
+  "version": "1.0.0",
+  "description": "Storage service",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch --coverage --config ./jest.config.js",
+    "dev": "nodemon index",
+    "prod": "node index"
+  },
+  "keywords": [
+    "Storage",
+    "Microservice"
+  ],
+  "author": "caffeines",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.11",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.0.2",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
+  }
+}
