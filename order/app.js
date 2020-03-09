@@ -6,7 +6,7 @@ const morgan = require('morgan');
 require('dotenv').config({ path: '.env' });
 const mongoose = require('./config/mongoose');
 const response = require('./middleware/response');
-// const routes = require('./routes/auth');
+const routes = require('./routes/order');
 const app = express();
 app.use(helmet());
 app.use(morgan('dev'));
@@ -18,5 +18,5 @@ const server = http.createServer(app);
 
 mongoose();
 
-// app.use(routes);
+app.use(routes);
 module.exports = app;
