@@ -4,8 +4,9 @@ const router = express.Router();
 const { authenticate, authorizeAdmin, authorizeOwner } = require('../middleware/auth');
 
 const { upload } = require('../logic/create');
-const { uploadFile } = require('../controllers/storage');
+const { uploadFile, getImage } = require('../controllers/storage');
 
-router.post('/', upload.array('files'), uploadFile);
+router.post('/', /* authorizeAdmin, */ upload.array('files'), uploadFile);
+router.get('/:name',  getImage);
 
 module.exports = router;

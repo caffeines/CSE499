@@ -17,7 +17,7 @@ const storage = new GridFsStorage({
         };
         resolve(fileInfo);
       } else {
-        reject( new Error('Invalid mimetype'));
+        reject(new Error('Invalid mimetype'));
       }
     });
   }
@@ -26,7 +26,7 @@ const storage = new GridFsStorage({
 storage.on('connection', (db) => {
   console.log('Storage connection successful');
 });
- 
+
 storage.on('connectionFailed', (err) => {
   console.error(err);
 });

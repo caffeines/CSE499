@@ -4,7 +4,7 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config({ path: '.env' });
-const mongoose = require('./config/mongoose');
+const { connection } = require('./config/mongoose');
 const response = require('./middleware/response');
 const routes = require('./routes/storage');
 
@@ -17,7 +17,6 @@ app.use(response);
 app.use(express.urlencoded({ extended: true }));
 const server = http.createServer(app);
 
-// mongoose();
 app.use(routes);
 
 module.exports = server;
