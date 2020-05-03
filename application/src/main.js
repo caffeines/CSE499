@@ -14,6 +14,9 @@ export const eventBus = new Vue();
 Vue.config.productionTip = false;
 Vue.use(VueCarousel);
 Vue.use(vueCountryRegionSelect);
+Vue.use(vuetify, {
+  iconfont: 'md'
+});
 
 new Vue({
   router,
