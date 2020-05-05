@@ -1,0 +1,25 @@
+// profile navigation
+
+.profile-nav {
+  background-color: $color-grey-light-2;
+  padding: 2rem 0;
+}
+.pnav-list {
+  font-size: 1.6rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.pnav-item {
+  &-link {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: var(--color-black);
+    }
+  }
+}
+// .pnav-item:not(:last-child) {
+//   margin-right: 6rem;
+// }
