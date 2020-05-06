@@ -1,7 +1,12 @@
 <template>
   <div class="profile-home">
     <v-container>
-      <div class="profile"></div>
+      <div class="profile">
+        <div class="profile-img">
+          <img src="@/assets/img/profile.png" alt="Profile Image" class="profile-img__photo" />
+        </div>
+        <div class="profile-info"></div>
+      </div>
       <div class="profile-nav">
         <ul class="pnav-list">
           <li class="pnav-item">

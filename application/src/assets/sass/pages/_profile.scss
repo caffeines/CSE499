@@ -31,4 +31,12 @@
     url('./assets/img/bg.png');
   background-size: cover;
   height: 50vh;
+
+  &-img {
+    &__photo {
+      width: 20rem;
+      height: 20rem;
+      border-radius: 50%;
+    }
+  }
 }
