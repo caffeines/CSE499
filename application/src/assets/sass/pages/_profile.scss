@@ -1,7 +1,7 @@
 // profile navigation
 
 .profile-nav {
-  background-color: $color-grey-light-2;
+  background-color: $color-primary-dark;
   padding: 2rem 0;
 }
 .pnav-list {
@@ -16,10 +16,19 @@
     &:link,
     &:visited {
       text-decoration: none;
-      color: var(--color-black);
+
+      color: var(--color-white);
     }
   }
 }
-// .pnav-item:not(:last-child) {
-//   margin-right: 6rem;
-// }
+
+.profile {
+  background-image: linear-gradient(
+      to bottom,
+      rgba($color-primary-dark, 0.6),
+      rgba($color-primary-light, 0.6)
+    ),
+    url('./assets/img/bg.png');
+  background-size: cover;
+  height: 50vh;
+}
