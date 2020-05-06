@@ -8,10 +8,11 @@
   font-size: 1.6rem;
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
 }
 .pnav-item {
+  margin-right: 4rem;
   &-link {
     &:link,
     &:visited {
@@ -23,6 +24,7 @@
 }
 
 .profile {
+  position: relative;
   background-image: linear-gradient(
       to bottom,
       rgba($color-primary-dark, 0.6),
@@ -31,12 +33,47 @@
     url('./assets/img/bg.png');
   background-size: cover;
   height: 50vh;
+  display: flex;
 
   &-img {
     &__photo {
+      position: absolute;
       width: 20rem;
       height: 20rem;
       border-radius: 50%;
+      bottom: -4rem;
+      left: 3rem;
+    }
+  }
+  &-info {
+    position: absolute;
+    bottom: 0rem;
+    left: 25rem;
+    background-color: var(--color-black);
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+
+    &__nametitle {
+      color: var(--color-white);
+      font-size: 1.6rem;
+      letter-spacing: 0.1rem;
+      font-weight: bold;
+    }
+    &__name {
+    }
+    &__emailadd {
+      color: var(--color-white);
+      font-size: 1.6rem;
+      letter-spacing: 0.1rem;
+    }
+    &__email {
+    }
+    &__phone {
+      color: var(--color-white);
+      font-size: 1.6rem;
+      letter-spacing: 0.1rem;
+    }
+    &__phonenumber {
     }
   }
 }
