@@ -7,7 +7,8 @@ import Checkout from '../views/Checkout.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
 
-import Profile from '../views/Profile.vue';
+// import Profile from '../views/Profile/Profile.vue';
+import Profile from '../views/Profile/Profile.vue';
 
 Vue.use(VueRouter);
 
