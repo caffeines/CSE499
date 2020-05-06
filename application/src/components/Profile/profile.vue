@@ -23,18 +23,21 @@
       <div class="profile-nav">
         <ul class="pnav-list">
           <li class="pnav-item">
-            <a href="#" class="pnav-item-link">About</a>
+            <router-link to="/profile" class="pnav-item-link">About</router-link>
           </li>
           <li class="pnav-item">
-            <a href="#" class="pnav-item-link">Account</a>
+            <router-link to="/profile/account" class="pnav-item-link">Account</router-link>
           </li>
           <li class="pnav-item">
-            <a href="#" class="pnav-item-link">Current Order</a>
+            <router-link to="/profile/order-list" class="pnav-item-link">Current Order</router-link>
           </li>
           <li class="pnav-item">
             <a href="#" class="pnav-item-link">Order History</a>
           </li>
         </ul>
+      </div>
+      <div class="content">
+        <router-view />
       </div>
     </v-container>
   </div>

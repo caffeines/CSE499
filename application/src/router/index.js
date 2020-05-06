@@ -7,8 +7,10 @@ import Checkout from '../views/Checkout.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
 
-// import Profile from '../views/Profile/Profile.vue';
-import Profile from '../views/Profile/Profile.vue';
+import Profile from '../views/Profile.vue';
+import profileAbout from '../views/Profile/Profile_About.vue';
+import profileAccount from '../views/Profile/Profile_Account.vue';
+import profileOrderList from '../views/Profile/Profile_OrderList.vue';
 
 Vue.use(VueRouter);
 
@@ -21,9 +23,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+
     component: () => import('../views/About.vue')
   },
   {
@@ -49,7 +49,24 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    component: Profile
+    component: Profile,
+    children: [
+      {
+        path: '',
+        name: 'about',
+        component: profileAbout
+      },
+      {
+        path: 'account',
+        name: 'account',
+        component: profileAccount
+      },
+      {
+        path: 'order-list',
+        name: 'order-list',
+        component: profileOrderList
+      }
+    ]
   }
 ];
 
