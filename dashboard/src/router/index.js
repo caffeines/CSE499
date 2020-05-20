@@ -4,13 +4,26 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 export default new Router({
-    mode: 'hash',
-    base: process.env.BASE_URL,
-    routes: [
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/',
+      component: () => import('../views/index.vue'),
+      children: [
+        // Dashboard
+        // {
+        //   name: 'Dashboard',
+        //   path: '',
+        //   component: () => import('../views/dashboard.vue'),
+        // },
+        // Product
         {
-            path: '/',
-            component: () => import('../views/index.vue'),
-
+          name: 'Product',
+          path: '/product',
+          component: () => import('../views/product.vue'),
         },
-    ],
+      ],
+    },
+  ],
 });
