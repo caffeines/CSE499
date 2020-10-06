@@ -5,7 +5,7 @@
         width="256"
       >
         <v-navigation-drawer app
-                             disable-resize-watcher="true" v-model="drawer" color="#0E1A35" >
+                             disable-resize-watcher="true" v-model="drawer" color="#0E1A35" class="sidebar-icon" >
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="title">
@@ -19,8 +19,6 @@
 
           <v-divider></v-divider>
           <br>
-          <br>
-          <br>
           <v-card
             class="white--text mx-auto"
             width="300"
@@ -33,61 +31,26 @@
                   <v-icon>mdi-home</v-icon>
                 </v-list-item-icon>
 
-                <v-list-item-title>Home</v-list-item-title>
+                <v-list-item-title>Dashboard</v-list-item-title>
               </v-list-item>
 
               <v-list-group
-                prepend-icon="mdi-account-circle"
+                prepend-icon="mdi-account-circle" class="sidebar-icon"
               >
                 <template v-slot:activator>
                   <v-list-item-title class="white--text">Users</v-list-item-title>
                 </template>
-
-                <v-list-group
-                  no-action
-                  sub-group
+                <v-list-item
+                  v-for="([title, icon], i) in cruds"
+                  :key="i"
+                  link
                 >
-                  <template v-slot:activator>
-                    <v-list-item-content>
-                      <v-list-item-title>Admin</v-list-item-title>
-                    </v-list-item-content>
-                  </template>
+                  <v-list-item-title v-text="title"></v-list-item-title>
 
-                  <v-list-item
-                    v-for="([title, icon], i) in admins"
-                    :key="i"
-                    link
-                  >
-                    <v-list-item-title v-text="title"></v-list-item-title>
-
-                    <v-list-item-icon>
-                      <v-icon v-text="icon"></v-icon>
-                    </v-list-item-icon>
-                  </v-list-item>
-                </v-list-group>
-
-                <v-list-group
-                  no-action
-                  sub-group
-                >
-                  <template v-slot:activator>
-                    <v-list-item-content>
-                      <v-list-item-title>Actions</v-list-item-title>
-                    </v-list-item-content>
-                  </template>
-
-                  <v-list-item
-                    v-for="([title, icon], i) in cruds"
-                    :key="i"
-                    link
-                  >
-                    <v-list-item-title v-text="title"></v-list-item-title>
-
-                    <v-list-item-icon>
-                      <v-icon v-text="icon"></v-icon>
-                    </v-list-item-icon>
-                  </v-list-item>
-                </v-list-group>
+                  <v-list-item-icon>
+                    <v-icon v-text="icon"></v-icon>
+                  </v-list-item-icon>
+                </v-list-item>
               </v-list-group>
             </v-list>
           </v-card>
@@ -120,7 +83,7 @@ export default {
 .v-list-item__title{
  color: #fff;
 }
-.mdi{
+.sidebar-icon .mdi{
   color: #fff !important;
 }
 </style>
