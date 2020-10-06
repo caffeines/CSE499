@@ -26,7 +26,7 @@
             color="#0E1A35"
           >
             <v-list light>
-              <v-list-item class="white--text" link="true" to="">
+              <v-list-item class="white--text" link="true" to="/dashboard">
                 <v-list-item-icon>
                   <v-icon>mdi-home</v-icon>
                 </v-list-item-icon>
