@@ -9,9 +9,7 @@ import dashboard from '@/components/Dashboard/dashboard.vue';
 
 export default {
   name: 'Dashboard',
-  components: {
-    dashboard,
-  },
+  components: { dashboard, },
 };
 </script>
 

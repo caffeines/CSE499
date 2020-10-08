@@ -46,7 +46,7 @@
                     <v-icon>mdi-file-outline</v-icon>
                   </v-list-item-icon>
                 </v-list-item>
-                <v-list-item link to="/manageuser">
+                <v-list-item link to="/createuser">
                   <v-list-item-title>Create User</v-list-item-title>
                   <v-list-item-icon>
                     <v-icon>mdi-plus-outline</v-icon>

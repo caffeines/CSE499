@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Dashboard from '../views/Home/Dashboard.vue';
 import ManageUser from '../views/Home/ManageUser.vue';
+import CreateUser from '../views/Home/CreateUser.vue';
 
 Vue.use(VueRouter);
 
@@ -14,6 +15,7 @@ const routes = [
     children: [
       { path: '', component: Dashboard },
       { path: 'manageUser', component: ManageUser },
+      { path: 'createUser', component: CreateUser },
     ],
   },
   {
