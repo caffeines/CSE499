@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <v-content>
-      <sidebar/>
-      <HelloWorld/>
+<!--      <sidebar/>-->
+<!--      <HelloWorld/>-->
       <router-view/>
     </v-content>
   </v-app>
@@ -11,15 +11,15 @@
 <script>
 
 // eslint-disable-next-line import/extensions
-import HelloWorld from './components/Topbar';
-import sidebar from './components/Sidebar.vue';
+// import HelloWorld from './components/Topbar';
+// import sidebar from './components/Sidebar.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
-    sidebar,
+    // HelloWorld,
+    // sidebar,
   },
 
   data: () => ({

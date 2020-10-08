@@ -49,7 +49,7 @@
           </v-btn>
         </template>
 
-        <v-list>
+        <v-list class="topbar-list">
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
@@ -67,7 +67,6 @@
 export default {
   name: 'HelloWorld',
   data: () => ({
-    drawer: true,
     items: [
       { title: 'Click Me' },
       { title: 'Click Me' },
@@ -94,5 +93,8 @@ export default {
 }
 .topbar-email-icon{
   margin-right: 1rem;
+}
+.v-menu__content{
+  top: 60px !important;
 }
 </style>

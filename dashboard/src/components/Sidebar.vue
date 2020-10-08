@@ -26,7 +26,7 @@
             color="#0E1A35"
           >
             <v-list light>
-              <v-list-item class="white--text" link="true" to="/dashboard">
+              <v-list-item class="white--text" link="true" to="/">
                 <v-list-item-icon>
                   <v-icon>mdi-home</v-icon>
                 </v-list-item-icon>
@@ -40,15 +40,16 @@
                 <template v-slot:activator>
                   <v-list-item-title class="white--text">Users</v-list-item-title>
                 </template>
-                <v-list-item
-                  v-for="([title, icon], i) in cruds"
-                  :key="i"
-                  link
-                >
-                  <v-list-item-title v-text="title"></v-list-item-title>
-
+                <v-list-item link to="/manageuser">
+                  <v-list-item-title>Manage User</v-list-item-title>
                   <v-list-item-icon>
-                    <v-icon v-text="icon"></v-icon>
+                    <v-icon>mdi-file-outline</v-icon>
+                  </v-list-item-icon>
+                </v-list-item>
+                <v-list-item link to="/manageuser">
+                  <v-list-item-title>Create User</v-list-item-title>
+                  <v-list-item-icon>
+                    <v-icon>mdi-plus-outline</v-icon>
                   </v-list-item-icon>
                 </v-list-item>
               </v-list-group>
@@ -71,10 +72,11 @@ export default {
       ['Settings', 'mdi-cog-outline'],
     ],
     cruds: [
-      ['Create', 'mdi-plus-outline'],
-      ['Read', 'mdi-file-outline'],
-      ['Update', 'mdi-update'],
-      ['Delete', 'mdi-delete'],
+
+      ['Manage User', 'mdi-file-outline'],
+      ['Create User', 'mdi-plus-outline'],
+      // ['Update', 'mdi-update'],
+      // ['Delete', 'mdi-delete'],
     ],
   }),
 };
