@@ -2,6 +2,153 @@
   <div>
     <v-container>
       <v-row>
+
+        <v-col cols="12" sm="6" md="3">
+          <v-card
+            class="mt-4 mx-auto"
+            max-width="400"
+          >
+            <v-sheet
+              class="v-sheet-custom v-sheet--offset mx-auto"
+              color="cyan"
+              elevation="12"
+              max-width="calc(100% - 32px)"
+            >
+              <div>
+                <v-icon class="white--text">
+                  mdi-poll
+                </v-icon>
+              </div>
+            </v-sheet>
+
+            <v-card-text class="pt-0 mt-3">
+              <div class="title font-weight-light mb-2">
+                Website Visitors
+              </div>
+              <div class="subheading font-weight-bold black--text">
+                +1112
+              </div>
+              <v-divider class="my-2"></v-divider>
+              <v-icon
+                class="mr-2"
+                small
+              >
+                mdi-clock
+              </v-icon>
+              <span class="caption grey--text font-weight-light">last registration 26 minutes ago</span>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <v-card
+            class="mt-4 mx-auto"
+            max-width="400"
+          >
+            <v-sheet
+              class="v-sheet-custom v-sheet--offset mx-auto"
+              color="cyan"
+              elevation="12"
+              max-width="calc(100% - 32px)"
+            >
+              <div>
+                <v-icon class="white--text">
+                  mdi-poll
+                </v-icon>
+              </div>
+            </v-sheet>
+
+            <v-card-text class="pt-0 mt-3">
+              <div class="title font-weight-light mb-2">
+                Website Visitors
+              </div>
+              <div class="subheading font-weight-bold black--text">
+                +1112
+              </div>
+              <v-divider class="my-2"></v-divider>
+              <v-icon
+                class="mr-2"
+                small
+              >
+                mdi-clock
+              </v-icon>
+              <span class="caption grey--text font-weight-light">last registration 26 minutes ago</span>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <v-card
+            class="mt-4 mx-auto"
+            max-width="400"
+          >
+            <v-sheet
+              class="v-sheet-custom v-sheet--offset mx-auto"
+              color="cyan"
+              elevation="12"
+              max-width="calc(100% - 32px)"
+            >
+              <div>
+                <v-icon class="white--text">
+                  mdi-poll
+                </v-icon>
+              </div>
+            </v-sheet>
+
+            <v-card-text class="pt-0 mt-3">
+              <div class="title font-weight-light mb-2">
+                Website Visitors
+              </div>
+              <div class="subheading font-weight-bold black--text">
+                +1112
+              </div>
+              <v-divider class="my-2"></v-divider>
+              <v-icon
+                class="mr-2"
+                small
+              >
+                mdi-clock
+              </v-icon>
+              <span class="caption grey--text font-weight-light">last registration 26 minutes ago</span>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="6" md="3">
+          <v-card
+            class="mt-4 mx-auto"
+            max-width="400"
+          >
+            <v-sheet
+              class="v-sheet-custom v-sheet--offset mx-auto"
+              color="cyan"
+              elevation="12"
+              max-width="calc(100% - 32px)"
+            >
+              <div>
+                <v-icon class="white--text">
+                  mdi-poll
+                </v-icon>
+              </div>
+            </v-sheet>
+
+            <v-card-text class="pt-0 mt-3">
+              <div class="title font-weight-light mb-2">
+                Website Visitors
+              </div>
+              <div class="subheading font-weight-bold black--text">
+                +1112
+              </div>
+              <v-divider class="my-2"></v-divider>
+              <v-icon
+                class="mr-2"
+                small
+              >
+                mdi-clock
+              </v-icon>
+              <span class="caption grey--text font-weight-light">last registration 26 minutes ago</span>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
         <v-col cols="12" sm="6" md="6">
           <v-card
             class="mx-auto text-center"
@@ -242,4 +389,10 @@ export default {
 </script>
 
 <style>
+.v-sheet-custom{
+  display: inline-block;
+  padding: 30px;
+  margin-top: -25px;
+  margin-left: 23px !important;
+}
 </style>

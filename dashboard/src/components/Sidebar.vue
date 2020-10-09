@@ -8,8 +8,8 @@
                              disable-resize-watcher="true" v-model="drawer" color="#0E1A35" class="sidebar-icon" >
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="title">
-                Application
+              <v-list-item-title class="title text-center">
+                Fresh Agric
               </v-list-item-title>
               <v-list-item-subtitle>
                 subtext
@@ -48,6 +48,44 @@
                 </v-list-item>
                 <v-list-item link to="/createuser">
                   <v-list-item-title>Create User</v-list-item-title>
+                  <v-list-item-icon>
+                    <v-icon>mdi-plus-outline</v-icon>
+                  </v-list-item-icon>
+                </v-list-item>
+              </v-list-group>
+              <v-list-group
+                prepend-icon="mdi-view-list" class="sidebar-icon"
+              >
+                <template v-slot:activator>
+                  <v-list-item-title class="white--text">Category</v-list-item-title>
+                </template>
+                <v-list-item link to="/manageuser">
+                  <v-list-item-title>Manage Category</v-list-item-title>
+                  <v-list-item-icon>
+                    <v-icon>mdi-file-outline</v-icon>
+                  </v-list-item-icon>
+                </v-list-item>
+                <v-list-item link to="/createuser">
+                  <v-list-item-title>Create Category</v-list-item-title>
+                  <v-list-item-icon>
+                    <v-icon>mdi-plus-outline</v-icon>
+                  </v-list-item-icon>
+                </v-list-item>
+              </v-list-group>
+              <v-list-group
+                prepend-icon="mdi-shopping" class="sidebar-icon"
+              >
+                <template v-slot:activator>
+                  <v-list-item-title class="white--text">Products</v-list-item-title>
+                </template>
+                <v-list-item link to="/manageuser">
+                  <v-list-item-title>Manage Products</v-list-item-title>
+                  <v-list-item-icon>
+                    <v-icon>mdi-file-outline</v-icon>
+                  </v-list-item-icon>
+                </v-list-item>
+                <v-list-item link to="/createuser">
+                  <v-list-item-title>Add Product</v-list-item-title>
                   <v-list-item-icon>
                     <v-icon>mdi-plus-outline</v-icon>
                   </v-list-item-icon>
